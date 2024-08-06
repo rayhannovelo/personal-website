@@ -27,7 +27,12 @@ export default function RootLayout({
           fontSans.variable
         )}
       >
-        {children}
+        <div className="h-screen grid grid-cols-[150px_1fr]">
+          <aside className="border bg-card text-card-foreground shadow-2xl z-10"></aside>
+          <div className="h-screen px-16 py-6 bg-green-50">
+            <div className="h-full  z-10">{children}</div>
+          </div>
+        </div>
       </body>
     </html>
   );
