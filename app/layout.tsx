@@ -3,6 +3,8 @@ import { Inter as FontSans } from "next/font/google";
 import { cn } from "@/lib/utils";
 
 import "@/styles/globals.css";
+import Avatar from "@/components/avatar";
+import Navbar from "@/components/navbar";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -20,17 +22,27 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
-          "min-h-screen bg-background font-sans antialiased",
+          "h-screen bg-background font-sans antialiased",
           fontSans.variable
         )}
+        style={{ background: "#191923" }}
       >
-        <div className="h-screen grid grid-cols-[150px_1fr]">
-          <aside className="border bg-card text-card-foreground shadow-2xl z-10"></aside>
-          <div className="h-screen px-16 py-6 bg-green-50">
-            <div className="h-full  z-10">{children}</div>
+        <div
+          className="grid grid-cols-[350px_1fr_100px] gap-4 h-full px-16 pt-12"
+          style={{
+            background:
+              "linear-gradient(159deg, rgba(37, 37, 50, 0.98), rgba(35, 35, 45, 0.98))",
+          }}
+        >
+          <div className="">
+            <Avatar />
+          </div>
+          <div className="overflow-y-auto hide-scrollbar">{children}</div>
+          <div>
+            <Navbar />
           </div>
         </div>
       </body>
